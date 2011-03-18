@@ -4,7 +4,7 @@ __kupfer_name__ = _("Sudo")
 __kupfer_actions__ = (
 		"OpenAsRoot",
 	)
-__description__ = _("Open selection with root priveleges")
+__description__ = _("Open selection with root privileges")
 __version__ = ""
 __author__ = "Jakh Daven <tuxcanfly@gmail.com>"
 
@@ -63,5 +63,5 @@ class OpenAsRoot (Open):
 	def item_types(self):
 		yield Leaf
 	def get_description(self):
-		return _("Open with root priveleges")
+		return _("Open with root privileges")
 
