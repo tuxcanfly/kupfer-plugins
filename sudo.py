@@ -38,12 +38,12 @@ class OpenAsRoot (Open):
 		elif type(leaf) == FileLeaf:
 			self.activate_multiple((leaf, ))
 
-	def activate_multiple(self, objects):
+	def activate_multiple(self, objects, iobjects=None):
 		appmap = {}
 		leafmap = {}
 		for iobj_app in objects:
 			if type(iobj_app) == AppLeaf:
-			    self.activate(iobj_app.object, [L.object for L in objects])
+			    self.activate(iobj_app.object)
 			elif type(iobj_app) == FileLeaf:
 				app = self.default_application_for_leaf(iobj_app)
 				id_ = app.get_id()
