@@ -18,7 +18,7 @@ __kupfer_settings__ = plugin_support.PluginSettings(
 		"key" : "sudo_command",
 		"label": _("Sudo Command"),
 		"type": str,
-		"value": "gksu",
+		"value": "gksudo",
 		"alternatives": ("kdesudo", )
 	},
 )
