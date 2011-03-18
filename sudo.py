@@ -43,7 +43,7 @@ class OpenAsRoot (Open):
 		leafmap = {}
 		for iobj_app in objects:
 			if type(iobj_app) == AppLeaf:
-			    self.activate(iobj_app.object)
+			    self.activate(iobj_app)
 			elif type(iobj_app) == FileLeaf:
 				app = self.default_application_for_leaf(iobj_app)
 				id_ = app.get_id()
