@@ -25,6 +25,7 @@ __kupfer_settings__ = plugin_support.PluginSettings(
 )
 
 class OpenAsRoot (Open):
+	rank_adjust = -20
 	def __init__(self):
 		Action.__init__(self, _("Open as root"))
 
