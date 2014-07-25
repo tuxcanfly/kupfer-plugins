@@ -4,14 +4,28 @@ __description__ = _("Search Pirate Bay with results shown directly")
 __version__ = ""
 __author__ = "Jakh Daven <tuxcanfly@gmail.com>"
 
+from kupfer import plugin_support
 from kupfer.objects import Action, Source
 from kupfer.objects import TextLeaf, UrlLeaf
 
 from tpb import TPB
 
 
+__kupfer_settings__ = plugin_support.PluginSettings(
+    {
+        "key" : "pirate_bay_host",
+        "label": _("Pirate Bay host"),
+        "type": str,
+        "value": "thepiratebay.se",
+    },
+    {
+        "key" : "https",
+        "label": _("Use https"),
+        "type": bool,
+        "value": True,
+    },
+)
 
-SEARCH_HOST =  "http://pirateproxy.in"
 
 class Search (Action):
 	def __init__(self):
@@ -45,7 +59,9 @@ class SearchResults (Source):
 		return self.query
 
 	def get_items(self):
-                api = TPB(SEARCH_HOST)
+	        proto = "https" if __kupfer_settings__["https"] else "http"
+                url = proto + "://" + __kupfer_settings__["pirate_bay_host"]
+                api = TPB(url)
                 results = api.search(self.query)
 		for result in results:
 			yield UrlLeaf(result.magnet_link, result.title)
